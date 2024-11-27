@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fácil Digital</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
     
     <!-- Fonte Rawline -->
     <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"/>
@@ -50,6 +52,7 @@
     
 </head>
 <body>
+    
     <div class="template-base">
         <header class="br-header" id="header" data-sticky="data-sticky">
             <div class="container-lg">
@@ -178,7 +181,8 @@
                                 </a>
                                 <ul role="group">
                                     <li>
-                                        <a class="menu-item" href="http://127.0.0.1:8000/pesquisa/avancada/" role="treeitem">
+                                        <a class="menu-item" href="{% url 'pesquisa:pesquisa_simplificada' %}
+                                        " role="treeitem">
                                             <span class="icon"><i class="fas fa-search-minus"></i></span>
                                             <span class="content">Pesquisa Simplificada</span>
                                         </a>
@@ -205,22 +209,9 @@
                                         <span class="content">Gerencial</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="menu-item" href="http://127.0.0.1:8000/relatorios/estatisticas/" role="treeitem">
-                                        <span class="icon"><i class="fas fa-building"></i></span>
-                                        <span class="content">Unidade</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="menu-item" href="http://127.0.0.1:8000/relatorios/estatisticas/" role="treeitem">
-                                        <span class="icon"><i class="fas fa-chart-pie"></i></span>
-                                        <span class="content">Desempenho</span>
-                                    </a>
-                                </li>
+                                                            
                             </ul>
                         </div>
-
-
                             <!-- Distribuição de Solicitações -->
                             <div class="menu-folder">
                                 <a class="menu-item" href="javascript:void(0)" role="treeitem">
@@ -251,26 +242,38 @@
                             </div>
 
                             <!-- Comunicações -->
-                            <div class="menu-folder">
-                                <a class="menu-item" href="javascript:void(0)" role="treeitem">
-                                    <span class="icon"><i class="fas fa-comments"></i></span>
-                                    <span class="content">Comunicações</span>
-                                </a>
-                                <ul role="group">
-                                    <li>
-                                        <a class="menu-item" href="#" role="treeitem">
-                                            <span class="icon"><i class="fas fa-pen"></i></span>
-                                            <span class="content">Definir Texto Padrão</span>
+                                    <div class="menu-folder">
+                                        <a class="menu-item" href="javascript:void(0)" role="treeitem">
+                                            <span class="icon"><i class="fas fa-comments"></i></span>
+                                            <span class="content">Comunicações</span>
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-item" href="#" role="treeitem">
-                                            <span class="icon"><i class="fas fa-search"></i></span>
-                                            <span class="content">Consultar Texto Padrão</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                                        <ul role="group">
+                                            <li>
+                                                <a class="menu-item" href="http://127.0.0.1:8000/comunicacoes/admin/textos-status/" role="treeitem">
+                                                    <span class="icon"><i class="fas fa-tasks"></i></span>
+                                                    <span class="content">Textos - Situação/Status</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="http://127.0.0.1:8000/comunicacoes/admin/textos-email/#" role="treeitem">
+                                                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                                                    <span class="content">Textos - E-mails</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="http://127.0.0.1:8000/comunicacoes/admin/textos-scripts/" role="treeitem">
+                                                    <span class="icon"><i class="fas fa-file-code"></i></span>
+                                                    <span class="content">Textos - Scripts</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="menu-item" href="http://127.0.0.1:8000/comunicacoes/admin/configuracao" role="treeitem">
+                                                    <span class="icon"><i class="fas fa-cog"></i></span>
+                                                    <span class="content">Configurações</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
 
                             <!-- Usuários -->
                             <div class="menu-folder">
@@ -310,7 +313,6 @@
                                     </li>
                                 </ul>
                             </div>
-
                                         </nav>
                                     </div>
                                     <div class="menu-scrim" data-dismiss="menu" tabindex="0"></div>
@@ -320,9 +322,7 @@
                             <div class="content-wrapper flex-grow-1">
                                 <div class="br-breadcrumb">
                                     <ul class="crumb-list">
-                                        <li class="crumb home">
-                                            <i class="fas fa-home"></i>
-                                        </li>
+                                    
                                         {% block breadcrumb %}{% endblock %}
                                     </ul>
                                 </div>

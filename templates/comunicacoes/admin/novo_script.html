@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class="crumb"><i class="fas fa-home"></i></li>
+<li class="crumb">Comunicações</li>
+<li class="crumb">Textos - Scripts</li>
+<li class="crumb">Novo Script</li>
+{% endblock %}
+
+{% block content %}
+<div class="container-lg">
+    <div class="row mb-4">
+        <div class="col">
+            <h2>Novo Script de Atendimento</h2>
+        </div>
+    </div>
+
+    <div class="br-card">
+        <div class="card-content">
+            <form>
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="br-input">
+                            <label for="nome">Nome/Descrição:</label>
+                            <input id="nome" type="text" placeholder="Digite o nome do script">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="br-textarea">
+                            <label for="texto">Texto do Script:</label>
+                            <textarea id="texto" rows="8"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="br-input">
+                            <label for="servicos">Serviços Relacionados:</label>
+                            <div class="br-tag-input">
+                                <div class="tags-content">
+                                    <!-- Tags serão inseridas aqui via JavaScript -->
+                                </div>
+                                <input type="text" id="servicos" placeholder="Digite e pressione Enter para adicionar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <button class="br-button secondary mr-2" type="button" onclick="history.back()">Cancelar</button>
+                        <button class="br-button primary" type="submit">Salvar Script</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

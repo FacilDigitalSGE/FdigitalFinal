@@ -8,7 +8,6 @@ urlpatterns = [
     path('distribuicao/', include('distribuicao.urls', namespace='distribuicao')),
     path('relatorios/', include('relatorios.urls', namespace='relatorios')),
     path('pesquisa/', include('pesquisa.urls')),
+    path('comunicacoes/', include('comunicacoes.urls')),
+
 ]
-
-
-

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-lg">
+    <div class="row">
+        <div class="col">
+            <div class="br-breadcrumb">
+                <ul class="crumb-list">
+                    <li class="crumb home">
+                        <a href="/">
+                            <i class="fas fa-home"></i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li class="crumb">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Comunicações</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <div class="br-menu">
+                <div class="menu-container">
+                    <div class="menu-panel">
+                        <nav class="menu-body">
+                            <div class="menu-folder">
+                                <a class="menu-item" href="{% url 'comunicacoes:admin_dashboard' %}">
+                                    <span class="icon"><i class="fas fa-home"></i></span>
+                                    <span class="content">Dashboard</span>
+                                </a>
+                                <a class="menu-item" href="{% url 'comunicacoes:admin_textos' %}">
+                                    <span class="icon"><i class="fas fa-file-alt"></i></span>
+                                    <span class="content">Textos Padrão</span>
+                                </a>
+                                <a class="menu-item">
+                                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                                    <span class="content">Templates de Email</span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="br-card">
+                <div class="card-content">
+                    {% block admin_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

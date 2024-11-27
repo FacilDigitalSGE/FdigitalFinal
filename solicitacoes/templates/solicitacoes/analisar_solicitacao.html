@@ -4,8 +4,8 @@
 {% block page_title %}Análise de Solicitação{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'govbr/css/core.min.css' %}">
-<link rel="stylesheet" href="{% static 'govbr/css/components.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/core.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.min.css' %}">
 <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"/>
 {% endblock %}
 
@@ -77,74 +77,186 @@
         </div>
     </div>
     <!-- Timeline -->
-    <div class="br-card mt-3">
-          <div class="card-content">
-              <h3 class="text-bold-600">Histórico da Solicitação</h3>
-            
-                            <!-- Tabela complementar com detalhes -->
-              <div class="br-table mt-4">
-                  <div class="table-responsive">
-                      <table>
-                          <thead>
-                              <tr>
-                                  <th>Data/Hora</th>
-                                  <th>Ação</th>
-                                  <th>Responsável</th>
-                                  <th>Observações</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>18/10/2024 15:45</td>
-                                  <td>Requerimento Preenchido</td>
-                                  <td>Sistema</td>
-                                  <td>Documentação inicial enviada pelo solicitante</td>
-                              </tr>
-                              <tr>
-                                  <td>18/10/2024 15:46</td>
-                                  <td>Documentos Anexados</td>
-                                  <td>Contribuinte</td>
-                                  <td>Documentação complementar anexada</td>
-                              </tr>
-                              <tr>
-                                  <td>18/10/2024 15:47</td>
-                                  <td>Análise Iniciada</td>
-                                  <td>Silmarmoreno</td>
-                                  <td>Processo em análise técnica</td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
-      </div>
-    <!-- Documentos -->
-    <div class="br-card mt-3">
-        <div class="card-content">
-            <h3 class="text-bold-600">Documentos Anexados</h3>
-            <div class="br-list">
-                <div class="br-item">
-                    <div class="content">
-                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                        <div class="flex-fill">
-                            <span class="text-bold-600">GUIA_20DE_20SERVI_C7O_2</span>
-                            <span class="text-sm text-gray-60">application/p - 18/10/2024 15:46</span>
-                        </div>
-                        <div class="actions">
-                            <button class="br-button secondary small" type="button">
-                                <i class="fas fa-eye" aria-hidden="true"></i>
-                                <span>Visualizar</span>
-                            </button>
-                            <button class="br-button primary small" type="button">
-                                <i class="fas fa-download" aria-hidden="true"></i>
-                                <span>Download</span>
-                            </button>
-                        </div>
+<div class="br-card mt-3">
+    <div class="card-content">
+        <h3 class="text-bold-600">Histórico da Solicitação</h3>
+        <div class="br-table mt-4">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Ação</th>
+                            <th>Responsável</th>
+                            <th>Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>18/10/2024 15:45</td>
+                            <td>Requerimento Preenchido</td>
+                            <td>Sistema</td>
+                            <td>Documentação inicial enviada pelo solicitante</td>
+                        </tr>
+                        <tr>
+                            <td>18/10/2024 15:46</td>
+                            <td>Documentos Anexados</td>
+                            <td>Contribuinte</td>
+                            <td>Documentação complementar anexada</td>
+                        </tr>
+                        <tr>
+                            <td>18/10/2024 15:47</td>
+                            <td>Análise Iniciada</td>
+                            <td>Silmarmoreno</td>
+                            <td>Processo em análise técnica</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Documentos -->
+<div class="br-card mt-3">
+    <div class="card-content">
+        <h3 class="text-bold-600">Documentos Anexados</h3>
+        <div class="br-list">
+            <div class="br-item">
+                <div class="content">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <div class="flex-fill">
+                        <span class="text-bold-600">GUIA_20DE_20SERVI_C7O_2</span>
+                        <span class="text-sm text-gray-60">application/p - 18/10/2024 15:46</span>
+                    </div>
+                    <div class="actions">
+                        <button class="br-button secondary small" type="button" onclick="showPreview('preview-1')">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                            <span>Visualizar</span>
+                        </button>
+                        <button class="br-button primary small" type="button">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            <span>Download</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="preview-1" class="preview-container" style="display: none;">
+                    <div class="preview-content">
+                        <embed src="/media/GUIA_20DE_20SERVI_C7O_2.pdf" type="application/pdf" width="100%" height="600px">
+                        <div class="preview-message">Pré-visualização disponível</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<style>
+.preview-container {
+    margin-top: 1rem;
+    border: 1px solid var(--gray-20);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.preview-content {
+    background: var(--gray-10);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-message {
+    color: var(--blue-warm-vivid-70);
+    margin-top: 1rem;
+    font-weight: 600;
+}
+</style>
+
+<script>
+function showPreview(previewId) {
+    const previewElement = document.getElementById(previewId);
+    if (previewElement.style.display === 'none') {
+        previewElement.style.display = 'block';
+    } else {
+        previewElement.style.display = 'none';
+    }
+}
+</script>
+
+<!-- Nova seção de Anexos de Atendimentos -->
+<div class="br-card mt-3">
+    <div class="card-content">
+        <h3 class="text-bold-600">Anexos de Atendimentos Anteriores</h3>
+        <div class="br-list">
+            {% if previous_attachments %}
+                {% for attachment in previous_attachments %}
+                    <div class="br-item">
+                        <div class="content">
+                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                            <div class="flex-fill">
+                                <span class="text-bold-600">{{ attachment.name }}</span>
+                                <span class="text-sm text-gray-60">{{ attachment.type }} - {{ attachment.date }}</span>
+                            </div>
+                            <div class="actions">
+                                <button class="br-button secondary small" type="button" onclick="showPreview('preview-attachment-{{ forloop.counter }}')">
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                    <span>Visualizar</span>
+                                </button>
+                                <button class="br-button primary small" type="button">
+                                    <i class="fas fa-download" aria-hidden="true"></i>
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="preview-attachment-{{ forloop.counter }}" class="preview-container" style="display: none;">
+                            <div class="preview-content">
+                                <embed src="/media/{{ attachment.name }}" type="application/pdf" width="100%" height="600px">
+                                <div class="preview-message">Pré-visualização disponível</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="br-item">
+                    <div class="content">
+                        <span class="text-gray-60">Nenhum anexo disponível</span>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- Adicionar antes da seção de Comunicação -->
+<div class="br-card mt-3">
+    <div class="card-content">
+        <h3 class="text-bold-600">Buscar Script</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="br-input">
+                    <label for="busca-script">Pesquisar Script</label>
+                    <input id="busca-script" type="text" placeholder="Digite palavras-chave para buscar scripts...">
+                </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button class="br-button primary" type="button" onclick="buscarScript()">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <span>Buscar</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Resultados da Busca -->
+        <div id="resultados-scripts" class="mt-3" style="display: none;">
+            <div class="br-list">
+                <!-- Os resultados serão inseridos aqui dinamicamente -->
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Comunicação -->
     <div class="br-card mt-3">
@@ -152,47 +264,208 @@
             <h3 class="text-bold-600">Comunicação</h3>
             
             <!-- Encaminhar para Análise - Azul -->
-            <div class="br-textarea mt-3" style="border-left: 4px solid var(--blue-warm-vivid-50); border-color: var(--blue-warm-vivid-50); padding-left: 16px;">
-                <div class="br-tag text-uppercase mb-2" status="primary">Encaminhamento</div>
-                <label for="encaminhar">Encaminhar para Análise</label>
-                <textarea id="encaminhar" placeholder="Mensagem de encaminhamento do pedido..."></textarea>
+            <div class="mt-3">
+                <div class="br-tag text-uppercase mb-2 primary">Encaminhamento</div>
+                <div class="br-input primary w-100" style="border: 2px solid var(--blue-warm-vivid-70); border-radius: 4px;">
+                    <label for="encaminhar">Encaminhar para Análise</label>
+                    <textarea id="encaminhar" class="form-control primary w-100" maxlength="3900" placeholder="Mensagem de encaminhamento do pedido..." onkeyup="handleTextAreaChange('encaminhar'); updateCharCount(this, 'char-count-encaminhar')"></textarea>
+                    <div class="text-right mt-1">
+                        <small id="char-count-encaminhar" class="text-gray-60">0/3900 caracteres</small>
+                    </div>
+                </div>
             </div>
 
             <!-- Ação Concluída - Verde -->
-            <div class="br-textarea mt-3" style="border-left: 4px solid var(--green-warm-vivid-50); border-color: var(--green-warm-vivid-50); padding-left: 16px;">
-                <div class="br-tag text-uppercase mb-2" status="success">Conclusão</div>
-                <label for="conclusao">Ação Concluída</label>
-                <textarea id="conclusao" placeholder="Mensagem de conclusão..."></textarea>
+            <div class="mt-3">
+                <div class="br-tag text-uppercase mb-2 success">Conclusão</div>
+                <div class="br-input success w-100" style="border: 2px solid var(--green-warm-vivid-50); border-radius: 4px;">
+                    <label for="conclusao">Ação Concluída</label>
+                    <textarea id="conclusao" class="form-control success w-100" maxlength="3900" placeholder="Mensagem de conclusão..." onkeyup="handleTextAreaChange('conclusao'); updateCharCount(this, 'char-count-conclusao')"></textarea>
+                    <div class="text-right mt-1">
+                        <small id="char-count-conclusao" class="text-gray-60">0/3900 caracteres</small>
+                    </div>
+                </div>
             </div>
 
-            <!-- Pendência - Laranja -->
-            <div class="br-textarea mt-3" style="border-left: 4px solid var(--orange-vivid-40); border-color: var(--orange-vivid-40); padding-left: 16px;">
-                <div class="br-tag text-uppercase mb-2" status="warning">Pendência</div>
-                <label for="pendencia">Pendência Identificada</label>
-                <textarea id="pendencia" placeholder="Descreva a pendência..."></textarea>
+            <!-- Pendência - Amarelo -->
+            <div class="mt-3">
+                <div class="br-tag text-uppercase mb-2 warning">Pendência</div>
+                <div class="br-input warning w-100" style="border: 2px solid var(--yellow-vivid-40); border-radius: 4px;">
+                    <label for="pendencia">Pendência Identificada</label>
+                    <textarea id="pendencia" class="form-control warning w-100" maxlength="3900" placeholder="Descreva a pendência..." onkeyup="handleTextAreaChange('pendencia'); updateCharCount(this, 'char-count-pendencia')"></textarea>
+                    <div class="text-right mt-1">
+                        <small id="char-count-pendencia" class="text-gray-60">0/3900 caracteres</small>
+                    </div>
+                </div>
             </div>
+
+            <script>
+            function updateCharCount(textarea, counterId) {
+                const counter = document.getElementById(counterId);
+                const currentLength = textarea.value.length;
+                counter.textContent = `${currentLength}/3900 caracteres`;
+    
+                // Muda a cor do contador quando está próximo do limite
+                if (currentLength > 3500) {
+                    counter.classList.add('text-warning');
+                } else {
+                    counter.classList.remove('text-warning');
+                }
+            }
+            </script>
         </div>
     </div>
 
     <!-- Botões de Ação -->
     <div class="br-card mt-3 mb-5">
         <div class="card-content">
-            <div class="d-flex justify-content-end">
-                <button class="br-button secondary mr-2" type="button">
+            <!-- Botão Encaminhar -->
+            <div class="br-magic-button">
+                <button class="br-button mr-2" type="button" data-toggle="modal" data-target="#modal-encaminhar" style="background-color: var(--blue-warm-vivid-70); color: var(--pure-white);">
                     <i class="fas fa-reply" aria-hidden="true"></i>
                     <span>Encaminhar para Análise</span>
                 </button>
-                <button class="br-button primary mr-2" type="button">
+            </div>
+
+            <!-- Botão Concluir -->
+            <div class="br-magic-button">
+                <button class="br-button success mr-2" type="button" data-toggle="modal" data-target="#modal-concluir">
                     <i class="fas fa-check" aria-hidden="true"></i>
                     <span>Solicitação Concluída</span>
                 </button>
-                <button class="br-button warning" type="button">
+            </div>
+
+            <!-- Botão Pendência -->
+            <div class="br-magic-button">
+                <button class="br-button" type="button" data-toggle="modal" data-target="#modal-pendencia" style="background-color: var(--yellow-20); color: var(--gray-80);">
                     <i class="fas fa-clock" aria-hidden="true"></i>
                     <span>Solicitação com Pendência</span>
                 </button>
             </div>
         </div>
     </div>
+
+    <!-- Modal Encaminhar -->
+    <div class="br-modal" id="modal-encaminhar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Confirmar Encaminhamento</h2>
+                    <button class="br-button circle" type="button" data-dismiss="modal" aria-label="Fechar">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma o encaminhamento desta solicitação para análise?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="br-button secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="br-button primary" type="button" onclick="confirmarAcao('encaminhar')">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Concluir -->
+    <div class="br-modal" id="modal-concluir">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h2 class="modal-title">Confirmar Conclusão</h2>
+                    <button class="br-button circle" type="button" data-dismiss="modal" aria-label="Fechar">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+
+
+                    <p>Confirma a conclusão desta solicitação?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="br-button secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="br-button success" type="button" onclick="confirmarAcao('concluir')">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pendência -->
+    <div class="br-modal" id="modal-pendencia">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h2 class="modal-title">Confirmar Pendência</h2>
+                    <button class="br-button circle" type="button" data-dismiss="modal" aria-label="Fechar">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+
+
+                    <p>Confirma o registro de pendência nesta solicitação?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="br-button secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="br-button warning" type="button" onclick="confirmarAcao('pendencia')">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    function confirmarAcao(tipo) {
+        const mensagem = document.getElementById(tipo).value;
+        
+        if (!mensagem) {
+            alert('Por favor, preencha a mensagem antes de confirmar a ação.');
+            return;
+        }
+
+        // Aqui você pode fazer uma chamada AJAX para o backend
+        const data = {
+            tipo: tipo,
+            mensagem: mensagem
+        };
+
+        fetch('/api/solicitacao/atualizar-status', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Fecha o modal
+                document.querySelector(`#modal-${tipo}`).classList.remove('show');
+                // Atualiza a interface
+                window.location.reload();
+            }
+        });
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    </script>
 </div>
 {% endblock %}
 

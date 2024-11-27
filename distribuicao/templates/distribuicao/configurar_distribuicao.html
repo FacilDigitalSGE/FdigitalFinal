@@ -20,34 +20,42 @@
         </div>
     </div>
 
-    <!-- Após o título e antes das estatísticas -->
-    <div class="row mb-4">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-6">
-            <div class="br-datepicker" data-mode="single" data-type="text">
-                <div class="br-input">
-                    <label for="data-limite-input">Data Limite:</label>
-                    <input type="text" id="data-limite-input" placeholder="dd/mm/aaaa"/>
-                    <button class="br-button" type="button" aria-label="Abrir Calendário" data-trigger>
-                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Estatísticas -->
+       <!-- Estatísticas -->
     <div class="br-card mb-4">
         <div class="card-content">
-            <h3>Estatísticas das Solicitações Não Distribuídas</h3>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h3>Estatísticas das Solicitações Não Distribuídas</h3>
+                </div>
+                <div class="col-md-6">
+                    <div class="br-datepicker" data-mode="single" data-type="text">
+                        <div class="br-input">
+                            <label for="data-limite-input">Data Limite:</label>
+                            <input type="text" id="data-limite-input" placeholder="dd/mm/aaaa"/>
+                            <button class="br-button" type="button" aria-label="Abrir Calendário" data-trigger>
+                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {{ grid_estatisticas|safe }}
         </div>
     </div>
 
     <!-- Configurações -->
-    <div class="br-card mb-4" style="border: 2px solid #E52207;">
+    <div class="br-card mb-4">
         <div class="card-content">
+            <!-- Tarja azul com última alteração -->
+            <div class="br-message info mb-3" role="alert">
+                <div class="icon">
+                    <i class="fas fa-clock" aria-hidden="true"></i>
+                </div>
+                <div class="content" id="ultima-alteracao">
+                    Última alteração em: <strong>{{ ultima_alteracao|default:"27/11/2024 às 11:29 por SILMARMORENO" }}</strong>
+                </div>
+            </div>
+
             <h3 class="h4 mb-3">Opções de Configuração</h3>
             <div class="row mb-4">
                 <div class="col-md-6">
@@ -92,15 +100,20 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <button class="br-button primary" type="button" onclick="consultarLog()">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                        Consultar LOG
-                    </button>
+                    <div class="d-flex gap-2">
+                        <button class="br-button primary" type="button" onclick="consultarLog()">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                            Consultar LOG
+                        </button>
+                        <button class="br-button secondary" type="button" onclick="gravarDistribuicao()">
+                            <i class="fas fa-save" aria-hidden="true"></i>
+                            Gravar Distribuição
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Configurações por Atendente -->
     <div class="br-card mb-4">
         <div class="card-content">

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block breadcrumb %}
 <li class="crumb">
     <i class="fas fa-angle-right"></i>
@@ -12,14 +11,36 @@
 </li>
 {% endblock %}
 
+<!-- Trecho onde está o magic button -->
+<div class="mt-4">
+    <button class="br-button primary mr-2" type="submit">
+        <i class="fas fa-plus" aria-hidden="true"></i>
+        Criar
+    </button>
+    <div class="br-magic-button">
+        <button class="br-button primary magic" type="button" onclick="window.location.href='{% url 'distribuicao:criar_classificacao' %}'">
+            <i class="fas fa-plus-circle" aria-hidden="true"></i>
+            <span class="button-content">Nova Classificação</span>
+        </button>
+    </div>
+</div>
+
 {% block content %}
 <div class="container-lg">
     <div class="row mb-4">
         <div class="col">
             <h2 class="text-bold-weight-semi-bold">Criar/Editar Rota de Distribuição</h2>
         </div>
+        <div class="col text-right">
+            <div class="br-magic-button">
+                <button class="br-button primary magic" type="button" onclick="window.location.href='{% url 'distribuicao:criar_classificacao' %}'">
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                    <span class="button-content">Nova Classificação</span>
+                </button>
+            </div>
+        </div>
     </div>
-
+</div>
     <div class="br-card">
         <div class="card-content">
             <form>
@@ -36,13 +57,16 @@
                                     {% endfor %}
                                 </select>
                             </div>
-                            <div class="br-switch mt-4">
-                                <input type="checkbox" id="ativo" checked/>
-                                <label for="ativo">Ativo</label>
+                            <div class="mt-4">
+                                <button class="br-button primary mr-2" type="button" onclick="window.location.href='{% url 'distribuicao:editar_rota' %}'">
+                                    <i class="fas fa-plus" aria-hidden="true"></i>
+                                    Criar
+                                </button>
                             </div>
+                            
                         </div>
                     </div>
-                </div>
+                </div>  
 
                 <!-- Grid de Grupos -->
                 <div class="br-card mb-4">
@@ -54,40 +78,20 @@
                 <!-- Botões de Ação -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <button class="br-button secondary" type="button" onclick="window.location.href='{% url 'distribuicao:criar_classificacao' %}'">
-                                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
-                                    Novo Grupo de Classificação
-                                </button>
-                            </div>
-
-                            <div>
-                                <button class="br-button primary mr-2" type="submit">
-                                    <i class="fas fa-save" aria-hidden="true"></i>
-                                    Criar
-                                </button>
-                                <button class="br-button secondary" type="button" onclick="window.location.href='{% url 'distribuicao:criar_rota' %}'">
-                                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
-                                    Voltar
-                                </button>
-                            </div>
-                        </div>
+                        <button class="br-button secondary" type="button" onclick="window.location.href='{% url 'distribuicao:criar_rota' %}'">
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                            Voltar
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    function visualizarGrupo(id) {
-        alert('Visualizando o grupo ' + id);
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
         const tableList = []
         for (const [index, brTable] of window.document.querySelectorAll('.br-table').entries()) {

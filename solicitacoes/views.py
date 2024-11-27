@@ -42,16 +42,41 @@ def solicitacoes_analise(request):
 def classificacao_solicitacao(request):
     from django.template.loader import render_to_string
     
+    
     columns = ["Selecionar", "Protocolo", "Data", "Solicitante", "Assunto", "Classificação", "Ações"]
     
     table_data = [
-        ['<div class="text-center"><div class="br-checkbox"><input id="check1" type="checkbox"/><label for="check1"></label></div></div>',
-          '<div class="text-center">45678/2024</div>', 
-          '<div class="text-center">05/08/2024</div>', 
-          '<div class="text-center">FULANO DE TAL LTDA</div>', 
-          '<div class="text-center">Alteração Cadastral</div>',
-          '<div class="text-center"><div class="br-select"><select><option value="">Selecione</option><option value="drm">DRM VRE</option><option value="outros">ITBI/ISSQN</option></select></div></div>',
-          '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Editar Classificação"><i class="fas fa-edit"></i></button> <button class="br-button circle small" type="button" title="Visualizar" onclick="window.location.href=\'/solicitacoes/analisar-solicitacao\'"><i class="fas fa-eye"></i></button></div>']
+        ['<div class="d-flex justify-content-center align-items-center"><div class="br-checkbox"><input id="check1" type="checkbox"/><label for="check1"></label></div></div>',
+         '<div class="text-center">45678/2024</div>', 
+         '<div class="text-center">05/08/2024</div>', 
+         '<div class="text-center">FULANO DE TAL LTDA</div>', 
+         '<div class="text-center">Alteração Cadastral</div>',
+         '<div class="text-center"><div class="br-select"><select><option value="">Selecione</option><option value="drm">DRM VRE</option><option value="outros">ITBI/ISSQN</option></select></div></div>',
+         '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Gravar alteração da classificação"><i class="fas fa-save"></i></button> <button class="br-button circle small" type="button" title="Visualizar" onclick="window.location.href=\'/solicitacoes/analisar-solicitacao\'"><i class="fas fa-eye"></i></button></div>'],
+         
+    ['<div class="d-flex justify-content-center align-items-center"><div class="br-checkbox"><input id="check2" type="checkbox"/><label for="check2"></label></div></div>',
+         '<div class="text-center">45679/2024</div>', 
+         '<div class="text-center">06/08/2024</div>', 
+         '<div class="text-center">EMPRESA ABC LTDA</div>', 
+         '<div class="text-center">Certidão Negativa</div>',
+         '<div class="text-center"><div class="br-select"><select><option value="">Selecione</option><option value="drm">DRM VRE</option><option value="outros">ITBI/ISSQN</option></select></div></div>',
+         '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Gravar alteração da classificação"><i class="fas fa-save"></i></button> <button class="br-button circle small" type="button" title="Visualizar" onclick="window.location.href=\'/solicitacoes/analisar-solicitacao\'"><i class="fas fa-eye"></i></button></div>'],
+         
+    ['<div class="d-flex justify-content-center align-items-center"><div class="br-checkbox"><input id="check3" type="checkbox"/><label for="check3"></label></div></div>',
+         '<div class="text-center">45680/2024</div>', 
+         '<div class="text-center">07/08/2024</div>', 
+         '<div class="text-center">COMERCIAL XYZ EIRELI</div>', 
+         '<div class="text-center">Alvará de Funcionamento</div>',
+         '<div class="text-center"><div class="br-select"><select><option value="">Selecione</option><option value="drm">DRM VRE</option><option value="outros">ITBI/ISSQN</option></select></div></div>',
+         '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Gravar alteração da classificação"><i class="fas fa-save"></i></button> <button class="br-button circle small" type="button" title="Visualizar" onclick="window.location.href=\'/solicitacoes/analisar-solicitacao\'"><i class="fas fa-eye"></i></button></div>'],
+         
+    ['<div class="d-flex justify-content-center align-items-center"><div class="br-checkbox"><input id="check4" type="checkbox"/><label for="check4"></label></div></div>',
+         '<div class="text-center">45681/2024</div>', 
+         '<div class="text-center">08/08/2024</div>', 
+         '<div class="text-center">INDUSTRIA 123 S/A</div>', 
+         '<div class="text-center">Licença Ambiental</div>',
+         '<div class="text-center"><div class="br-select"><select><option value="">Selecione</option><option value="drm">DRM VRE</option><option value="outros">ITBI/ISSQN</option></select></div></div>',
+         '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Gravar alteração da classificação"><i class="fas fa-save"></i></button> <button class="br-button circle small" type="button" title="Visualizar" onclick="window.location.href=\'/solicitacoes/analisar-solicitacao\'"><i class="fas fa-eye"></i></button></div>']
     ]
     
     context = {
@@ -62,6 +87,8 @@ def classificacao_solicitacao(request):
     
     grid_content = render_to_string('components/ggrid.html', context)
     return render(request, 'solicitacoes/classificacao_solicitacao.html', {'grid_content': grid_content})
+    
+   
 
 def lista_usuarios(request):
     from django.template.loader import render_to_string
@@ -253,38 +280,30 @@ def concluida(request):
         }
     }
     return render(request, 'solicitacoes/concluida.html', dados_solicitacao)
-
 def solicitacoes_para_analise(request):
     from django.template.loader import render_to_string
     
-
-    columns = ["Selecionar", "Protocolo", "Data", "Solicitante", "Assunto", "Status", "Prioridade"]
+    columns = ["Protocolo", "Data", "Solicitante", "Assunto", "Status", "Prioridade", "Ações"]
     
     table_data = [
-
-        ['<div class="d-flex justify-content-center align-items-center"><div class="br-checkbox"><input id="check1" type="checkbox"/><label for="check1"></label></div></div>', 
-         '<div class="text-center">45678/2024</div>', 
+        ['<div class="text-center">45678/2024</div>', 
          '<div class="text-center">05/08/2024</div>', 
          '<div class="text-center">FULANO DE TAL LTDA</div>', 
          '<div class="text-center">Alteração Cadastral</div>',
          '<div class="text-center"><div class="br-tag info">Aguardando Análise</div></div>',
-
-
-
-         '<div class="text-center"><div class="d-flex align-items-center justify-content-center"><span class="br-tag info mr-2" title="Idoso"><i class="fas fa-user-clock"></i>Idoso</span><div class="br-switch small"><input id="urgent-45678" type="checkbox" checked><label for="urgent-45678">Urgente</label></div></div></div>'],
-        ['<div class="d-flex justify-content-center align-items-center"><div class="br-checkbox"><input id="check2" type="checkbox"/><label for="check2"></label></div></div>', 
-         '<div class="text-center">45679/2024</div>', 
+         '<div class="text-center"><div class="d-flex align-items-center justify-content-center"><span class="br-tag info mr-2" title="Idoso"><i class="fas fa-user-clock"></i>Idoso</span><div class="br-switch small"><input id="urgent-45678" type="checkbox" checked><label for="urgent-45678">Urgente</label></div></div></div>',
+         '<div class="text-center"><button class="br-button circle small" type="button" title="Visualizar" onclick="window.location.href=\'/solicitacoes/analisar-solicitacao\'"><i class="fas fa-eye"></i></button></div>'],
+        
+        ['<div class="text-center">45679/2024</div>', 
          '<div class="text-center">05/08/2024</div>', 
          '<div class="text-center">EMPRESA XYZ LTDA</div>', 
          '<div class="text-center">Certidão Negativa</div>',
          '<div class="text-center"><div class="br-tag info">Aguardando Análise</div></div>',
-
-
-         '<div class="text-center"><div class="br-switch small"><input id="urgent-45679" type="checkbox"><label for="urgent-45679">Urgente</label></div></div>']
+         '<div class="text-center"><div class="br-switch small"><input id="urgent-45679" type="checkbox"><label for="urgent-45679">Urgente</label></div></div>',
+         '<div class="text-center"><button class="br-button circle small" type="button" title="Visualizar" onclick="window.location.href=\'/solicitacoes/analisar-solicitacao\'"><i class="fas fa-eye"></i></button></div>']
     ]
     
     context = {
-
         'title': 'Solicitações para Análise',
         'columns': columns,
         'table_data': table_data
@@ -293,7 +312,6 @@ def solicitacoes_para_analise(request):
     grid_content = render_to_string('components/ggrid.html', context)
     return render(request, 'solicitacoes/solicitacoes_para_analise.html', {'grid_content': grid_content})
 
-
     
 def analisar_solicitacao(request):
     dados_solicitacao = {
@@ -301,26 +319,61 @@ def analisar_solicitacao(request):
         'inscricao': '123.45.66.0666.0',
         'cadastro': '4566',
         'data_hora': '18/10/2024 15:45:36',
-        'status': 'Em Análise'
+        'status': 'Em Análise',
+        'previous_attachments': [
+            {
+                'name': 'DOCUMENTO_COMPLEMENTAR.pdf',
+                'type': 'application/pdf',
+                'date': '19/10/2024'
+            }
+        ]
     }
     return render(request, 'solicitacoes/analisar_solicitacao.html', dados_solicitacao)
 
 def novas_solicitacoes(request):
+    from django.template.loader import render_to_string
+    
+    columns = ["Nº Protocolo", "Assunto", "Solicitante", "Ult. Analista", "Data Entrada", "Classificação", "Prioridade", "Ações"]
+    
     table_data = [
-        ["78550", "Análise de Documentos", "22/10/2024", "João Silva", "123.456.789-00", 
-         "(11) 98765-4321", "joao@email.com", "20/10/2024", 
-         {'template': 'components/priority_column.html', 'context': {'priority': {'elderly': True, 'urgent': False}}}],
-        ["78551", "Renovação de Licença", "23/10/2024", "Maria Santos", "987.654.321-00",
-         "(11) 91234-5678", "maria@email.com", "21/10/2024",
-         {'template': 'components/priority_column.html', 'context': {'priority': {'elderly': False, 'urgent': True}}}],
-        ["78552", "Alteração Cadastral", "24/10/2024", "Pedro Alves", "456.789.123-00",
-         "(11) 94567-8901", "pedro@email.com", "22/10/2024",
-         {'template': 'components/priority_column.html', 'context': {'priority': {'elderly': False, 'urgent': False}}}]
-    ]
+    ['<div class="text-center">2024.78550</div>',
+     '<div class="text-center">Análise de Documentos</div>',
+     '<div class="text-center">João Silva</div>',
+     '<div class="text-center">Silmar</div>',
+     '<div class="text-center">20/10/2024</div>',
+     '<div class="text-center">ESPECÍFICO LICENÇA</div>',
+     '<div class="text-center"><div class="d-flex align-items-center justify-content-center"><span class="br-tag info mr-2" title="Idoso"><i class="fas fa-user-clock"></i>Idoso</span><div class="br-switch small"><input id="urgent-78550" type="checkbox" checked><label for="urgent-78550">Urgente</label></div></div></div>',
+     '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Editar"><i class="fas fa-edit"></i></button> <button class="br-button primary circle small" type="button" title="Visualizar" onclick="window.location.href=\'http://127.0.0.1:8000/solicitacoes/analisar-solicitacao/\'"><i class="fas fa-eye"></i></button></div>'],
+    
+    ['<div class="text-center">2024.78551</div>',
+     '<div class="text-center">Renovação de Licença</div>',
+     '<div class="text-center">Maria Santos</div>',
+     '<div class="text-center">Alessandro</div>',
+     '<div class="text-center">21/10/2024</div>',
+     '<div class="text-center">ISS, ITBI</div>',
+     '<div class="text-center"><div class="d-flex align-items-center justify-content-center"><div class="br-switch small"><input id="urgent-78551" type="checkbox"><label for="urgent-78551">Urgente</label></div></div></div>',
+     '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Editar"><i class="fas fa-edit"></i></button> <button class="br-button primary circle small" type="button" title="Visualizar" onclick="window.location.href=\'http://127.0.0.1:8000/solicitacoes/analisar-solicitacao/\'"><i class="fas fa-eye"></i></button></div>'],
+    
+    ['<div class="text-center">2024.78552</div>',
+     '<div class="text-center">Alteração Cadastral</div>',
+     '<div class="text-center">Pedro Alves</div>',
+     '<div class="text-center">Vinícius</div>',
+     '<div class="text-center">22/10/2024</div>',
+     '<div class="text-center">ESPECÍFICO VISA</div>',
+     '<div class="text-center"><div class="d-flex align-items-center justify-content-center"><span class="br-tag info mr-2" title="Idoso"><i class="fas fa-user-clock"></i>Idoso</span><div class="br-switch small"><input id="urgent-78552" type="checkbox"><label for="urgent-78552">Urgente</label></div></div></div>',
+     '<div class="text-center"><button class="br-button secondary circle small" type="button" title="Editar"><i class="fas fa-edit"></i></button> <button class="br-button primary circle small" type="button" title="Visualizar" onclick="window.location.href=\'http://127.0.0.1:8000/solicitacoes/analisar-solicitacao/\'"><i class="fas fa-eye"></i></button></div>']
+]
 
-    return render(request, 'solicitacoes/novas_solicitacoes.html', {
+    context = {
+        'title': 'Lista de Solicitações',
+        'columns': columns,
         'table_data': table_data
-    })
+    }
+    
+    grid_content = render_to_string('components/ggrid.html', context)
+    return render(request, 'solicitacoes/novas_solicitacoes.html', {'grid_content': grid_content})
+
+
 
 def teste_switch(request):
     return render(request, 'solicitacoes/teste_switch.html')

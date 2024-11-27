@@ -1,0 +1,80 @@
+{% extends 'comunicacoes/admin/base_admin.html' %}
+
+{% block admin_content %}
+<h2>Configurações de Comunicação</h2>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="br-card">
+            <div class="card-content">
+                <h3>Notificações Automáticas</h3>
+                
+                <div class="br-list mt-3">
+                    <div class="br-item">
+                        <div class="content">
+                            <div class="flex-fill">
+                                <span class="text-bold-600">Nova Solicitação</span>
+                                <span class="text-sm text-gray-600 d-block">Enviar email ao criar nova solicitação</span>
+                            </div>
+                            <div class="br-switch">
+                                <input type="checkbox" id="notification1" checked>
+                                <label for="notification1">Ativo</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="br-item">
+                        <div class="content">
+                            <div class="flex-fill">
+                                <span class="text-bold-600">Pendências</span>
+                                <span class="text-sm text-gray-600 d-block">Notificar quando houver pendências</span>
+                            </div>
+                            <div class="br-switch">
+                                <input type="checkbox" id="notification2" checked>
+                                <label for="notification2">Ativo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="br-card">
+            <div class="card-content">
+                <h3>Assinatura Padrão</h3>
+                
+                <div class="br-textarea mt-3">
+                    <label for="signature">Assinatura de Email</label>
+                    <div id="editor">
+                        <p>Atenciosamente,</p>
+                        <p>Equipe Fácil Digital</p>
+                        <p>Prefeitura de Guarulhos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-end mt-4">
+    <button class="br-button primary" type="button">
+        <i class="fas fa-save"></i>
+        <span>Salvar Configurações</span>
+    </button>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+{% endblock %}

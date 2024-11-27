@@ -43,9 +43,16 @@ INSTALLED_APPS = [
     'distribuicao',
     'relatorios',
     'pesquisa',
-
-
+    'ckeditor',
+    'comunicacoes',
 ]
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

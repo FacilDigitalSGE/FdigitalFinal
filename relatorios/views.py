@@ -3,18 +3,16 @@ from django.shortcuts import render
 def estatisticas(request):
     from django.template.loader import render_to_string
     
-    columns = ["Atendente", "Unidade", "Em Análise", "C/ Pendências", "Concluído", "Devolvido", "Cancelado", "Total", "Ações"]
+    columns = ["Atendente", "Unidade", "Total Em Análise", "Total C/ Pendências", "Concluído","Total", "Ações"]
     table_data = []
     
     atendentes = [
         {
-            'nome': 'BENEDETABUENO',
+            'nome': 'BENEDITABUENO',
             'unidade': 'FÁCIL BOM CLIMA TARDE',
             'em_analise': 62,
             'pendencias': 8,
             'concluido': 28,
-            'devolvido': 9,
-            'cancelado': 0,
             'total': 107
         },
         {
@@ -23,8 +21,6 @@ def estatisticas(request):
             'em_analise': 45,
             'pendencias': 12,
             'concluido': 32,
-            'devolvido': 5,
-            'cancelado': 2,
             'total': 96
         },
         {
@@ -32,8 +28,7 @@ def estatisticas(request):
             'unidade': 'FÁCIL BONSUCESSO',
             'em_analise': 38,
             'pendencias': 15,
-            'concluido': 25,
-            'devolvido': 7,
+            'concluido': 32, # Adicionada a chave 'concluido'
             'cancelado': 1,
             'total': 86
         }
@@ -46,8 +41,6 @@ def estatisticas(request):
             f'<div class="text-center">{a["em_analise"]}</div>',
             f'<div class="text-center">{a["pendencias"]}</div>',
             f'<div class="text-center">{a["concluido"]}</div>',
-            f'<div class="text-center">{a["devolvido"]}</div>',
-            f'<div class="text-center">{a["cancelado"]}</div>',
             f'<div class="text-center">{a["total"]}</div>',
             f'''<div class="text-center">
                 <button class="br-button circle small" type="button" title="Imprimir">
