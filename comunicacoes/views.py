@@ -7,6 +7,7 @@ from django.urls import reverse
 
 
 
+
 def admin_dashboard(request):
     return render(request, 'comunicacoes/admin/dashboard.html')
 
@@ -17,6 +18,10 @@ def admin_configuracao(request):
     return render(request, 'comunicacoes/admin/configuracao.html')
 
 from django.template.loader import render_to_string
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from django.urls import reverse
 
 def admin_textos_status(request):
     status_mapping = {
@@ -32,31 +37,31 @@ def admin_textos_status(request):
     table_data = [
         [f'<span class="{status_mapping["Aguardando Análise"][1]}"><i class="{status_mapping["Aguardando Análise"][0]}"></i> Aguardando Análise</span>',
          "Prezado(a) requerente, informamos que sua solicitação foi registrada pela Rede Fácil e será respondida em um prazo máximo de 10 (dez) dias úteis.",
-         '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'],
+         f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_texto_status")}\'"><i class="fas fa-edit"></i>Editar</button>'],
         
         [f'<span class="{status_mapping["Em análise"][1]}"><i class="{status_mapping["Em análise"][0]}"></i> Em análise</span>',
          "Prezado(a) requerente, informamos que sua solicitação foi registrada pela Rede Fácil e será respondida em um prazo máximo de 10 (dez) dias úteis.",
-         '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'],
+         f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_texto_status")}\'"><i class="fas fa-edit"></i>Editar</button>'],
         
         [f'<span class="{status_mapping["Com Pendência"][1]}"><i class="{status_mapping["Com Pendência"][0]}"></i> Com Pendência</span>',
          "Prezado(a) requerente, o atendimento realizado pelo Fácil Digital apresenta uma pendência que deve ser resolvida em até 15 (quinze) dias consecutivos. Caso não ocorra nenhuma ação dentro deste período, a solicitação será automaticamente cancelada.",
-         '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'],
+         f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_texto_status")}\'"><i class="fas fa-edit"></i>Editar</button>'],
         
         [f'<span class="{status_mapping["Encaminhada"][1]}"><i class="{status_mapping["Encaminhada"][0]}"></i> Encaminhada</span>',
          "Prezado(a) requerente, o atendimento por meio do Fácil Digital está finalizado com o encaminhamento do seu pedido para análise da área competente. Verifique as seções 'Comunique-se enviado' e 'Documentos anexados pelo Fácil', caso aplicável.",
-         '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'],
+         f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_texto_status")}\'"><i class="fas fa-edit"></i>Editar</button>'],
         
         [f'<span class="{status_mapping["Cancelada pelo Usuário"][1]}"><i class="{status_mapping["Cancelada pelo Usuário"][0]}"></i> Cancelada pelo Usuário</span>',
          "Prezado(a) requerente, informamos que sua solicitação inicial de serviços foi cancelada por iniciativa própria.",
-         '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'],
+         f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_texto_status")}\'"><i class="fas fa-edit"></i>Editar</button>'],
         
         [f'<span class="{status_mapping["Cancelada pelo Sistema"][1]}"><i class="{status_mapping["Cancelada pelo Sistema"][0]}"></i> Cancelada pelo Sistema</span>',
          "Prezado(a) requerente, comunicamos que sua solicitação foi encerrada automaticamente por ausência de atividade no prazo de 15 (quinze) dias consecutivos. Se ainda possui interesse na questão, por favor, inicie uma nova solicitação.",
-         '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'],
+         f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_texto_status")}\'"><i class="fas fa-edit"></i>Editar</button>'],
         
         [f'<span class="{status_mapping["Concluída"][1]}"><i class="{status_mapping["Concluída"][0]}"></i> Concluída</span>',
          "Prezado(a) requerente, o atendimento por meio do Fácil Digital está finalizado. Verifique as seções 'Comunique-se enviado' e 'Documentos anexados pelo Fácil', caso aplicável.",
-         '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>']
+         f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_texto_status")}\'"><i class="fas fa-edit"></i>Editar</button>']
     ]
 
     grid_content = render_to_string('components/ggrid.html', {
@@ -112,20 +117,19 @@ def admin_textos_email(request):
 def admin_textos_scripts(request):
     table_data = [
         [
-            "Orientação IPTU", 
+            "Aprovação de Desdobro de Caneta", 
             "18/03/2024",
             "Rogério Nogueira",
             "Prezado contribuinte, para solicitar a segunda via do IPTU...",
             '<span class="br-tag">IPTU</span> <span class="br-tag">Segunda Via</span> <span class="br-tag">Tributos</span>',
-            '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'
-        ],
+            f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_script")}\'"><i class="fas fa-edit"></i>Editar</button>'        ],
         [
-            "Certidão Negativa", 
+            "Como deixar o Rogério sem graça", 
             "17/03/2024",
             "Heleni Bueno",
             "Para emissão da Certidão Negativa de Débitos Municipais...",
             '<span class="br-tag">CND</span> <span class="br-tag">Certidões</span>',
-            '<button class="br-button secondary small" type="button"><i class="fas fa-edit"></i>Editar</button>'
+            f'<button class="br-button secondary small" type="button" onclick="window.location.href=\'{reverse("comunicacoes:editar_script")}\'"><i class="fas fa-edit"></i>Editar</button>'
         ]
     ]
 
@@ -210,6 +214,42 @@ def editar_email_cancelamento(request):
     }
     
     return render(request, 'comunicacoes/admin/editar_email_cancelamento.html', {
+        'variaveis': variaveis_sistema,
+        'texto': texto_atual
+    })
+
+def editar_texto_status(request):
+    variaveis_sistema = {
+        'nome': '{{nome_requerente}}',
+        'data': '{{data_solicitacao}}',
+        'numero_chamado': '{{numero_chamado}}',
+        'assunto': '{{assunto_solicitacao}}'
+    }
+    
+    texto_atual = {
+        'status': 'rascunho',
+        'conteudo': 'Prezado(a) requerente, informamos que sua solicitação foi registrada pela Rede Fácil...'
+    }
+    
+    return render(request, 'comunicacoes/admin/editar_texto_status.html', {
+        'variaveis': variaveis_sistema,
+        'texto': texto_atual
+    })
+
+def editar_script(request):
+    variaveis_sistema = {
+        'nome': '{{nome_requerente}}',
+        'data': '{{data_solicitacao}}',
+        'numero_chamado': '{{numero_chamado}}',
+        'assunto': '{{assunto_solicitacao}}'
+    }
+    
+    texto_atual = {
+        'status': 'rascunho',  # rascunho, revisao, publicado
+        'conteudo': 'Prezado contribuinte, para solicitar a segunda via do IPTU...'
+    }
+    
+    return render(request, 'comunicacoes/admin/editar_script.html', {
         'variaveis': variaveis_sistema,
         'texto': texto_atual
     })

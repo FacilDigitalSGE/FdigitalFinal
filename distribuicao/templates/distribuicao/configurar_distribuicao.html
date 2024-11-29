@@ -80,19 +80,19 @@
             <div class="row mb-4">
                 <div class="col-md-4">
                     <div class="br-input">
-                        <label for="minimo-abastecimento">Número Mínimo de Abastecimento:</label>
+                        <label for="minimo-abastecimento">Número Mínimo P/ Habilitar o Re-Abastecimento :</label>
                         <input type="number" id="minimo-abastecimento" placeholder="Digite o número">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="br-input">
-                        <label for="quantidade-solicitacoes">Quantidade de Solicitações:</label>
+                        <label for="quantidade-solicitacoes">Quantidade de Solicitações a Serem Acrescentadas:</label>
                         <input type="number" id="quantidade-solicitacoes" placeholder="Digite a quantidade">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="br-input">
-                        <label for="percentual-tarefas">Percentual de Tarefas:</label>
+                        <label for="percentual-tarefas">Percentual de Tarefas de Complexidade Superior:</label>
                         <input type="number" id="percentual-tarefas" placeholder="Digite o percentual">
                     </div>
                 </div>
@@ -154,6 +154,19 @@
         for (const brButton of window.document.querySelectorAll('.br-button')) {
             buttonList.push(new core.BRButton('br-button', brButton));
         }
+
+        const switchDataLimite = document.getElementById('data-limite');
+        const inputDataLimite = document.getElementById('data-limite-input');
+        
+        function toggleDataLimite() {
+            inputDataLimite.disabled = switchDataLimite.checked;
+        }
+        
+        // Define estado inicial
+        toggleDataLimite();
+        
+        // Adiciona listener para mudanças no switch
+        switchDataLimite.addEventListener('change', toggleDataLimite);
     });
 </script>
 {% endblock %}

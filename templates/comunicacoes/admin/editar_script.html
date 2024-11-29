@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class="crumb"><i class="fas fa-home"></i></li>
+<li class="crumb">Comunicações</li>
+<li class="crumb">Textos - Scripts</li>
+<li class="crumb">Editar Script</li>
+{% endblock %}
+
+{% block content %}
+<div class="container-lg">
+    <div class="row mb-4">
+        <div class="col">
+            <h2>Editar Script de Atendimento</h2>
+            <div class="br-tag status info" style="border-radius: 4px;">
+                Rascunho
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Card de Simulação -->
+        <div class="col-4">
+            <div class="br-card h-100">
+                <div class="card-content">
+                    <h3 class="mb-3">Dados do Script:</h3>
+                    <div class="br-list" style="line-height: 1.2;">
+                        <div class="br-item py-1 border-bottom">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <strong>Nome:</strong>
+                                </div>
+                                <div class="col-8">
+                                    Aprovação de Desdobro
+                                </div>
+                            </div>
+                        </div>
+                        <div class="br-item py-1">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <strong>Serviços:</strong>
+                                </div>
+                                <div class="col-8">
+                                    <span class="br-tag">IPTU</span>
+                                    <span class="br-tag">Segunda Via</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card do Conteúdo do Script -->
+        <div class="col-8">
+            <div class="br-card h-100">
+                <div class="card-content">
+                    <form>
+                        <div class="br-textarea mb-4">
+                            <label for="script-content">Conteúdo do Script:</label>
+                            <textarea id="script-content" rows="12">{{ texto.conteudo }}</textarea>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="br-button secondary mr-2" type="button">
+                                <i class="fas fa-eye"></i>
+                                <span>Visualizar</span>
+                            </button>
+                            <button class="br-button secondary mr-2" type="button">
+                                <i class="fas fa-save"></i>
+                                <span>Salvar Rascunho</span>
+                            </button>
+                            <button class="br-button primary mr-2" type="button">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Enviar para Revisão</span>
+                            </button>
+                            <button class="br-button success" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Publicar</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

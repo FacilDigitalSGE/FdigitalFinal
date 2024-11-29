@@ -16,34 +16,68 @@
     <link rel="stylesheet" href="{% static 'css/core.min.css' %}">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+
     <head>
         <!-- Outros links de CSS existentes -->
         
             <style>
-                h2, h3 {
-                    font-weight: bold !important;
-                }
-                /* Estilos padrão para títulos */
-                h2 {
-                    font-weight: bold !important;
-                }
-            
-                /* Garantir que o conteúdo principal ocupe pelo menos a altura total da tela */
-                .content-wrapper {
-                    min-height: calc(100vh - 200px);
-                }
-        
-                /* Adiciona um espaçamento inferior no conteúdo principal */
-                .main-content {
-                    padding-bottom: 50px;
-                }
+            /* Cores para ícones do menu principal */
+/* Menu Principal - Cores diferentes para cada seção */
+/* Início */
+.menu-folder:nth-child(1) > .menu-item .icon {
+    color: var(--green-vivid-50);
+}
 
-                /* Estilo para o título Fácil Digital */
-                .header-sign {
-                    font-size: 24px;
-                    color: var(--blue-warm-vivid-80);
-                    font-weight: 600;
-                }
+/* Gerenciamento */
+.menu-folder:nth-child(2) > .menu-item .icon {
+    color: var(--blue-warm-vivid-50);
+}
+
+/* Solicitações */
+.menu-folder:nth-child(3) > .menu-item .icon {
+    color: var(--orange-vivid-50);
+}
+
+/* Pesquisa */
+.menu-folder:nth-child(4) > .menu-item .icon {
+    color: var(--purple-50);
+}
+
+/* Relatórios */
+.menu-folder:nth-child(5) > .menu-item .icon {
+    color: var(--red-vivid-50);
+}
+
+/* Distribuição */
+.menu-folder:nth-child(6) > .menu-item .icon {
+    color: var(--cyan-50);
+}
+
+/* Comunicações */
+.menu-folder:nth-child(7) > .menu-item .icon {
+    color: var(--gold-vivid-50);
+}
+
+/* Usuários */
+.menu-folder:nth-child(8) > .menu-item .icon {
+    color: var(--magenta-vivid-50);
+}
+
+/* Meus Dados */
+.menu-folder:nth-child(9) > .menu-item .icon {
+    color: var(--mint-cool-50);
+}   
+
+/* Submenus - todos em azul */
+.menu-folder ul .menu-item .icon {
+    color: var(--blue-warm-vivid-50);
+}
+
+/* Hover nos submenus */
+.menu-folder ul .menu-item:hover .icon {
+    color: var(--blue-warm-vivid-70);
+}
+
 
 
             </style>
@@ -370,7 +404,9 @@
                       </div>
 
                     <!-- Scripts do DS GOV -->
-                    <script src="{% static 'js/core.min.js' %}"></script>
+                    <script src="{% static 'js/core.min.js' %}"></script>      
+                    <script src="https://unpkg.com/imask"></script>
+
     <script src="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/js/core-init.js"></script>
     <script src="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/js/core.min.js"></script>
     <script>
@@ -383,3 +419,4 @@
     </script>
 </body>
 </html>
+

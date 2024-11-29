@@ -33,7 +33,16 @@
             <h2>Nova Solicitação</h2>
             <p class="text-base">Preencha os dados abaixo para criar sua solicitação</p>
         </div>
-
+        <div class="card-content">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="br-input mt-3">
+                        <label for="inscricao-imobiliaria">Inscrição Imobiliária</label>
+                        <input id="inscricao-imobiliaria" type="text" placeholder="Digite a inscrição imobiliária">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card-content">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -44,7 +53,7 @@
                 </div>
                 <div class="br-textarea">
                     <label for="descricao">Descrição da Solicitação * (máximo 500 caracteres)</label>
-                    <textarea id="descricao" maxlength="500" placeholder="Descreva sua solicitação detalhadamente"></textarea>
+                    <textarea id="descricao" maxlength="500" placeholder="Preencha este campo com detalhes claros e objetivos sobre o que está sendo solicitado, para facilitar o entendimento e garantir um atendimento mais eficiente."></textarea>
                     <div class="text-base mt-1">
                         <span id="char-count">0</span>/500
                     </div>
@@ -111,6 +120,10 @@
                     </div>
                 </div>
                 <!-- Adicionar script para contagem de caracteres -->
+             
+                
+                <script src="https://unpkg.com/imask"></script>
+                
                 <script>
                 document.getElementById('descricao').addEventListener('input', function() {
                     const maxLength = 500;
@@ -167,5 +180,17 @@ window.addEventListener('load', function() {
     }
 });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var inscricaoElement = document.getElementById('inscricao-imobiliaria');
+        var maskOptions = {
+            mask: '000.00.00.0000.00.000'
+        };
+        var mask = IMask(inscricaoElement, maskOptions);
+    });
+    </script>
+    
 {% endblock %}
 
+
+<script src="https://unpkg.com/imask"></script>

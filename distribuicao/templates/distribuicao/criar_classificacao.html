@@ -24,15 +24,20 @@
         <div class="card-content">
             <div class="row">
                 <div class="col-md-12 mb-4">
-                    <button class="br-button primary" type="button" onclick="window.location.href='{% url 'distribuicao:nova_classificacao' %}'">
+                    <button class="br-button success me-3" type="button" onclick="window.location.href='{% url 'distribuicao:nova_classificacao' %}'">
                         <i class="fas fa-plus" aria-hidden="true"></i>
                         Nova Classificação
                     </button>
                     
+                    <button class="br-button primary" type="button" onclick="window.location.href='{% url 'distribuicao:criar_rota' %}'">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        Definir Rota
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+    
     {{ grid|safe }}
     
 {% endblock %}

@@ -240,14 +240,16 @@ function showPreview(previewId) {
                     <input id="busca-script" type="text" placeholder="Digite palavras-chave para buscar scripts...">
                 </div>
             </div>
-            <div class="col-md-4 d-flex align-items-end">
+            <div class="col-md-4 d-flex align-items-end gap-2">
                 <button class="br-button primary" type="button" onclick="buscarScript()">
                     <i class="fas fa-search" aria-hidden="true"></i>
                     <span>Buscar</span>
                 </button>
+                <button class="br-button secondary" type="button" onclick="copiarParaCampo()">
+                    <i class="fas fa-copy" aria-hidden="true"></i>
+                    <span>Copiar Script</span>
+                </button>
             </div>
-        </div>
-
         <!-- Resultados da Busca -->
         <div id="resultados-scripts" class="mt-3" style="display: none;">
             <div class="br-list">
@@ -289,7 +291,7 @@ function showPreview(previewId) {
 
             <!-- Pendência - Amarelo -->
             <div class="mt-3">
-                <div class="br-tag text-uppercase mb-2 warning">Pendência</div>
+                <div class="br-tag text-uppercase mb-2 warning" style="color: #000000;">Pendência</div>
                 <div class="br-input warning w-100" style="border: 2px solid var(--yellow-vivid-40); border-radius: 4px;">
                     <label for="pendencia">Pendência Identificada</label>
                     <textarea id="pendencia" class="form-control warning w-100" maxlength="3900" placeholder="Descreva a pendência..." onkeyup="handleTextAreaChange('pendencia'); updateCharCount(this, 'char-count-pendencia')"></textarea>
@@ -321,10 +323,11 @@ function showPreview(previewId) {
         <div class="card-content">
             <!-- Botão Encaminhar -->
             <div class="br-magic-button">
-                <button class="br-button mr-2" type="button" data-toggle="modal" data-target="#modal-encaminhar" style="background-color: var(--blue-warm-vivid-70); color: var(--pure-white);">
+                <button class="br-button mr-2 text-white" type="button" data-toggle="modal" data-target="#modal-encaminhar" style="background-color: var(--blue-warm-vivid-70);">
                     <i class="fas fa-reply" aria-hidden="true"></i>
                     <span>Encaminhar para Análise</span>
                 </button>
+
             </div>
 
             <!-- Botão Concluir -->
@@ -465,7 +468,26 @@ function showPreview(previewId) {
         }
         return cookieValue;
     }
+    
+    function copiarParaCampo() {
+    const scriptSelecionado = document.querySelector('#resultados-scripts .script-selecionado');
+    if (scriptSelecionado) {
+        const textoScript = scriptSelecionado.querySelector('.texto-script').textContent;
+        const campoDestino = document.querySelector('#encaminhar'); // ou outro campo desejado
+        campoDestino.value = textoScript;
+        
+        // Feedback visual
+        const notification = new core.BRNotification('notificacao-copia', {
+            type: 'success',
+            message: 'Script copiado com sucesso!'
+        });
+        notification.show();
+    }
+}
+
     </script>
+    
+
 </div>
 {% endblock %}
 
